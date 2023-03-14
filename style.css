@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Roboto&display=swap');
 
 
 html {
@@ -9,8 +10,8 @@ body {
   min-height: 100vh;
   overflow-y: hidden;
   display: flex;
-  align-items: center;
-
+  align-items: center; /* only vertical axis */
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Video Background */
@@ -26,13 +27,17 @@ video {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100vw;
+  height: auto;
 }
 
 .video-overlay {
   position: fixed;
   left: 0;
   top: 0;
-
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* Container */
@@ -46,6 +51,7 @@ video {
   z-index: 2;
   display: flex;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
 
 }
 
@@ -79,7 +85,7 @@ input {
   border-radius: 20px;
   background: #fff;
   outline: none;
-
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Button */
@@ -95,7 +101,9 @@ button {
   cursor: pointer;
   outline: none;
 }
-
+button:hover {
+  filter: brightness(110%);
+}
 
 
 /* Countdown */
@@ -104,7 +112,7 @@ ul {
 }
 
 li {
-
+  display: inline-block;
   font-size: 30px;
   list-style-type: none;
   padding: 10px;
@@ -123,20 +131,45 @@ li span {
   top: 60px;
 }
 
+.complete-title {
+  animation: complete 4s infinite;
+}
+
+@keyframes complete {
+  0% {
+    color: rgb(239, 19, 19);
+  }
+  25% {
+    color: rgb(247, 208, 11);
+  }
+  50% {
+    color: rgb(9, 236, 24);
+    transform: scale(1.5);
+  }
+  75% {
+    color: rgb(15, 48, 237);
+  }
+  100% {
+    color: rgb(237, 13, 114);
+  }
+}
 
 /* Media Query: Large Smartphone (Vertical) */
 @media screen and (max-width: 600px) {
   .video-background {
-
+    height: 100vh;
+    width: 100vw;
   }
   
   video {
-
+    object-fit: cover;
+    object-position: 60%;
     margin-top: -1px;
   }
 
   .container {
-
+    min-width: unset;
+    width: 95vw;
     min-height: 245px;
     padding: 20px;
     margin: 10px;
